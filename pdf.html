@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" href="img/metaball_02.png" type="imgage/icon" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <title></title>
+  <style>
+    @font-face {
+      font-family: "DejaVuSans";
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://animatedlogo.ch/vertrag/dompdf/lib/fonts/DejaVuSans.ttf) format("truetype");
+    }
+
+    body {
+      margin-top: 2cm;
+      /*margin-left: 0.5cm;
+      margin-right: 0.5cm;*/
+      margin-bottom: 2cm;
+    }
+
+    * {
+      font-family: "DejaVuSans", sans-serif;
+      font-size: 12px;
+    }
+
+    .delete {
+      text-decoration: line-through;
+    }
+
+    .block {
+      padding-left: -19px;
+    }
+
+    .table {
+      position: absolute;
+      top: 400px;
+      left: 100px;
+      page-break-after: always;
+      border: 0;
+    }
+
+    .signature {
+      border-bottom: 1px solid black;
+      top: 20%;
+    }
+
+    .title {
+      position: relative;
+      top: 50px;
+      left: 0px;
+      font-weight: 400;
+      font-size: 30px;
+    }
+
+    .bild {
+      position: absolute;
+      top: 40px;
+      right: 10px;
+      width: 25%;
+    }
+
+    .titles {
+      font-size: 14px;
+    }
+
+    .stick {
+      display: flex;
+      flex-direction: row;
+      margin-top: 30px;
+    }
+
+    table.price {
+      border-right: 0;
+      border-top: 0.02em solid #ccc;
+      border-bottom: 0;
+      border-collapse: collapse;
+    }
+
+    table.price td {
+      border-top: 0;
+      border-bottom: 0.02em solid #ccc;
+      padding: 10px 0;
+    }
+
+    .bottom {
+      /*position: absolute;*/
+      bottom: 75px;
+    }
+
+    #footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      color: #aaa;
+      font-size: 0.9em;
+    }
+
+    header {
+      position: fixed;
+      top: 0cm;
+      left: 0cm;
+      right: 0cm;
+      height: 2cm;
+
+      color: white;
+      text-align: center;
+      line-height: 1.5cm;
+    }
+
+    #footer {
+      bottom: 0;
+      border-top: 0.1pt solid #aaa;
+      text-align: center;
+      margin-bottom: 0.7cm;
+    }
+
+    .footercontent {
+      text-align: left;
+      float: left;
+      display: inline;
+    }
+
+    .footercontent2 {
+      text-align: right;
+      float: right;
+      display: inline;
+    }
+
+    .page-number:before {
+      content: "Seite " counter(page);
+      display: inline;
+    }
+
+    .img_header {
+      float: right;
+      width: 20%;
+    }
+
+    ol {
+      list-style-position: inside;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img class="img_header" src="https://www.vertrag.door42.cloud/img/Logo_01.png" />
+  </header>
+  <div id="footer">
+    <div class="page-number"></div>
+    <div class="footercontent">Bergstrasse 3</div>
+    <div class="footercontent2">animated Logo</div>
+  </div>
+  <h1 class="title">Dienstleistungsvertrag</h1>
+  <table class="table">
+    <tr>
+      <td>Produkt :</td>
+      <td>animated logo</td>
+    </tr>
+    <tr>
+      <td>Verantwortlich :</td>
+      <td>{{user}}</td>
+    </tr>
+    <tr>
+      <td>Version :</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <td>Erstellungsdatum :</td>
+      <td>{{date}}</td>
+    </tr>
+  </table>
+  <p>
+    Auf Basis unserer Korrespondenz offeriert animated logo by DOOR’42
+    nachfolgendes Angebot. Bei Annahme kommt ein Vertrag zu Stande. Die
+    Vertragspartner bestehen aus:
+  </p>
+  <table style="margin-left: 80px; margin-top: 20px">
+    <tr>
+      <td style="font-weight: 700">Auftragnehmer :</td>
+    </tr>
+    <tr>
+      <td>animated logo</td>
+    </tr>
+    <tr>
+      <td>by DOOR 42</td>
+    </tr>
+    <tr>
+      <td>Bergstrasse 3</td>
+    </tr>
+    <tr>
+      <td>6004 Luzern</td>
+    </tr>
+  </table>
+  <table style="margin-left: 300px; margin-bottom: 20px; margin-top: -2cm">
+    <tr>
+      <td style="font-weight: 700">Auftraggeber :</td>
+    </tr>
+    <tr>
+      <td>{{enterprise}}</td>
+    </tr>
+    <tr>
+      <td>{{name}} {{prename}}</td>
+    </tr>
+    <tr>
+      <td>{{address}}</td>
+    </tr>
+    <tr>
+      <td>{{telefon}}</td>
+    </tr>
+    <tr>
+      <td>{{email}}</td>
+    </tr>
+  </table>
+  <br />
+  <br />
+  <br />
+  <div>
+    <h4 class="titles">1. Bestandteil der Dienstleistung</h4>
+    <p class="block">Was Sie erhalten:</p>
+    <ul>
+      <li>
+        Datenpaket mit deinem „animated logo“ (.gif) mit hellem und dunklem
+        Hintergrund in unterschiedlichen Grössen (100px, 200px, 300px)
+      </li>
+      <li>Word-Dokument mit deiner neuen E-Mail-Signatur</li>
+      <li>
+        Unterstützung bei der Integration des Logos bei der eigenen Webseite
+      </li>
+    </ul>
+    <h4 class="titles">2. Definition Basic animated logo</h4>
+    <p class="block">
+      Wir entwerfen anhand unseren Vorlagen fünf verschiedene passende
+      Entwürfe Ihres animierten Logos. Am Schluss entscheiden Sie, welches
+      Logo Sie am meisten bewegt. Dabei achten wir sehr darauf, dass die
+      Animation Ihr Logo entsprechend in den Vordergrund bringt.
+    </p>
+    <h4 class="titles">3. Definition Premium animated logo</h4>
+    <p class="block">
+      Sie können uns Ihren Wunsch äussern und wir kreieren für Sie Ihr
+      persönliches animiertes Logo. Das Logo ist hochwertiger, da wir Ihre
+      persönliche Geschichte in dem Logo wiedergeben. Daher ist der Preis auch
+      höher im Vergleich zur Basic-Variante.
+    </p>
+    <h4 class="titles">4. Konditionen</h4>
+    <p class="block">
+      Ein Projekt gilt 30 Tage nach der Abgabe als abgeschlossen. In dieser
+      Zeit hat der Auftraggeber das Recht allfällige Fehler zu melden und
+      diese werden innerhalb des offerierten Preises behoben. Nach Ablauf
+      dieser Frist werden jegliche Arbeiten anhand des Stundenansatzes dem
+      Auftraggeber verrechnet.
+    </p>
+    <p class="block">
+      Das Angebot steht unter Vorbehalt des derzeit abschätzbaren Aufwands und
+      kann nach genauer Abklärung mit Absprache des Auftraggebers variieren.
+    </p>
+  </div>
+  <div>
+    <h4 class="titles">5. Vorauszahlung</h4>
+    <p class="block">
+      Bezahlen Sie im Voraus mit Twint oder Kreditkarte und erhalten Sie 10%
+      Rabatt. Ansonsten senden wir Ihnen gerne eine Rechnung.
+    </p>
+  </div>
+  <div>
+    <h4 class="titles">6. Timeline - Dauer</h4>
+    <p class="block">
+      Das animierte Logo mit einer unserer Vorlagen dauert 5 Werktage. Falls
+      eine Vektorisierung des Logos notwendig ist, nimmt die Bearbeitung 10
+      Werktage in Anspruch. Personalisierte Logos benötigen ebenfalls 10
+      Werktage.
+    </p>
+  </div>
+  <br />
+  <div>
+    <h4 class="titles">7. More wishes</h4>
+    <p class="block">
+      Für alle weiteren Wünsche besprechen wir das weitere Vorgehen gerne mit
+      Ihnen sowie auch unseren entsprechenden Stundenansatz.
+    </p>
+  </div>
+  <p class="block">
+    Bei Unklarheiten oder Fragen stehen wir Ihnen selbstverständlich gerne zur
+    Verfügung. Über eine zukünftige Zusammenarbeit freuen wir uns sehr. “Let’s
+    animate your logo. Now.”
+  </p>
+  <br />
+  <h4 class="titles">8. Beschreibung</h4>
+  <br />
+  <div>
+    <table class="price" style="width: 100%">
+      <ol>
+        <tr class="standart">
+          <td style="width: 5%"></td>
+          <td style="width: 50%">
+            <li>Basic animated logo (30 Beispiele)</li>
+          </td>
+          <td style="width: 30%"></td>
+          <td style="width: 5%">CHF</td>
+          <td style="width: 10%; text-align: right">990.00.-</td>
+        </tr>
+        <tr class="pers">
+          <td style="width: 5%"></td>
+          <td style="width: 50%">
+            <li>Premium animated logo</li>
+          </td>
+          <td style="width: 30%"></td>
+          <td style="width: 5%">CHF</td>
+          <td style="width: 10%; text-align: right">1,990.00.-</td>
+        </tr>
+        <tr class="special">
+          <td style="width: 5%"></td>
+          <td style="width: 50%">
+            <li>Sondervereinbarung</li>
+          </td>
+          <td style="width: 30%"></td>
+          <td style="width: 5%">CHF</td>
+          <td style="width: 10%; text-align: right">{{specialinput}}.-</td>
+        </tr>
+        <tr class="vektor">
+          <td style="width: 5%"></td>
+          <td>
+            <li>Vektorisiertes Logo (eps / ai.)</li>
+          </td>
+          <td style="width: 30%"></td>
+          <td style="width: 5%">CHF</td>
+          <td style="text-align: right">390.00.-</td>
+        </tr>
+        <tr class="modern">
+          <td style="width: 5%"></td>
+          <td>
+            <li>Modernisiertes Logo</li>
+          </td>
+          <td style="width: 30%"></td>
+          <td style="width: 5%">CHF</td>
+          <td style="text-align: right">690.00.-</td>
+        </tr>
+        <tr style="font-weight: 700">
+          <td style="border: none"></td>
+          <td style="width: 50%; border: none"></td>
+          <td style="width: 30%">Total :</td>
+          <td style="width: 5%">CHF</td>
+          <td style="text-align: right">{{total}}.-</td>
+        </tr>
+        <tr class="instant">
+          <td style="border: none"></td>
+          <td style="width: 50%; border: none"></td>
+          <td style="width: 30%">Rabatt bei Sofortbezahlung :</td>
+          <td style="width: 5%">CHF</td>
+          <td style="text-align: right">{{rabatt}}.-</td>
+        </tr>
+        <tr class="instant" style="font-weight: 700">
+          <td style="border: none"></td>
+          <td style="width: 50%; border: none"></td>
+          <td style="width: 30%">Total Sofortbezahlung :</td>
+          <td style="width: 5%">CHF</td>
+          <td style="text-align: right">{{instantPay}}.-</td>
+        </tr>
+        <tr class="instant">
+          <td style="border: none"></td>
+          <td style="width: 50%; border: none"></td>
+          <td style="width: 30%">Zzgl. MWST 7.70%</td>
+          <td style="width: 5%">CHF</td>
+          <td style="width: 10%; text-align: right">{{mwstRabatt}}.-</td>
+        </tr>
+        <tr class="instant" style="font-weight: 700">
+          <td style="border: none"></td>
+          <td style="width: 50%; border: none"></td>
+          <td style="width: 30%">Betrag inkl. MWST</td>
+          <td style="width: 5%">CHF</td>
+          <td style="text-align: right">{{totalMwstRabatt}}.-</td>
+        </tr>
+        <tr class="bill">
+          <td style="border: none"></td>
+          <td style="width: 50%; border: none"></td>
+          <td style="width: 30%">Zzgl. MWST 7.70%</td>
+          <td style="width: 5%">CHF</td>
+          <td style="width: 10%; text-align: right">{{mwst}}.-</td>
+        </tr>
+        <tr class="bill" style="font-weight: 700">
+          <td style="border: none"></td>
+          <td style="width: 50%; border: none"></td>
+          <td style="width: 30%">Betrag inkl. MWST</td>
+          <td style="width: 5%">CHF</td>
+          <td style="text-align: right">{{totalMwst}}.-</td>
+        </tr>
+      </ol>
+    </table>
+  </div>
+  <div class="bottom">
+    <p>
+      Ich bestätige hiermit, dass ich alles gelesen habe und damit
+      einverstanden bin.
+    </p>
+    <div class="stick">
+      <div class="block" style="width: 46%; height: 50px; position: absolute; left:0px;">
+        <p>Offerte angenommen, Auftraggeber:</p>
+        <img width="93%" height="95%" src="https://www.vertrag.door42.cloud/img/unterschriften/unterschrift.png" />
+        <div class="signature"></div>
+        <pre>Datum, Ort              Signatur</pre>
+      </div>
+      <div style="width: 46%; height: 50px; position:absolute; right:0px;">
+        <p>Auftragnehmer:</p>
+        <img width="93%" height="95%"
+          src="https://www.vertrag.door42.cloud/img/unterschriften/unterschrift_virginia.png" />
+        <div class="signature"></div>
+        <pre>{{date}}, {{location}}              Signatur</pre>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
